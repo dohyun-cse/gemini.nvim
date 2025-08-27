@@ -56,11 +56,23 @@ local default_instruction_config = {
         return string.format(prompt, filetype, code)
       end,
     },
+    {
+      name = 'Code Comment',
+      command_name = 'GeminiCodeComment',
+      menu = 'Code Comment',
+      get_prompt = function(lines, bufnr)
+        local code = vim.fn.join(lines, '\n')
+        local filetype = vim.api.nvim_get_option_value('filetype', { buf = bufnr })
+        local prompt = 'Context:\n\n```%s\n%s\n```\n\n'
+            .. 'Objective: Provide doxygen comment for the following code.\n'
+        return string.format(prompt, filetype, code)
+      end,
+    },
   }
 }
 
 local default_hints_config = {
-  enabled = true,
+  enabled = false,
   hints_delay = 2000,
   insert_result_key = '<S-Tab>',
   get_prompt = function(node, bufnr)
@@ -80,7 +92,7 @@ Instruction: Use 1 or 2 sentences to describe what the following {filetype} func
 }
 
 local default_completion_config = {
-  enabled = true,
+  enabled = false,
   blacklist_filetypes = { 'help', 'qf', 'json', 'yaml', 'toml', 'xml' },
   blacklist_filenames = { '.env' },
   completion_delay = 800,
