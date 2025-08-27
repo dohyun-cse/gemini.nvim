@@ -32,7 +32,7 @@ M.setup = function()
 
       local generation_config = config.get_gemini_generation_config()
 
-      vim.api.nvim_command('tabnew')
+      vim.api.nvim_command('enew')
       local new_buf = vim.api.nvim_get_current_buf()
       vim.api.nvim_set_option_value('filetype', 'markdown', { buf = new_buf })
       local model_id = config.get_config({ 'model', 'model_id' })

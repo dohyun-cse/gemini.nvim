@@ -17,7 +17,7 @@ M.setup = function()
 end
 
 M.start_chat = function(context)
-  vim.api.nvim_command('tabnew')
+  vim.api.nvim_command('enew')
   local user_text = context.args
   local bufnr = vim.api.nvim_get_current_buf()
   vim.api.nvim_set_option_value('ft', 'markdown', { buf = bufnr })
