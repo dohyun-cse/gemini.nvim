@@ -63,23 +63,6 @@ M.setup = function()
     register_menu(item)
   end
 
-  local register_keymap = function(mode, keymap)
-    vim.api.nvim_set_keymap(mode, keymap, '', {
-      expr = true,
-      noremap = true,
-      silent = true,
-      callback = function()
-        if vim.fn.pumvisible() == 0 then
-          vim.api.nvim_command('popup Gemini')
-        end
-      end
-    })
-  end
-
-  local modes = { 'n' }
-  for _, mode in pairs(modes) do
-    register_keymap(mode, config.get_config({ 'instruction', 'menu_key' }) or '<Leader><Leader><Leader>g')
-  end
 end
 
 return M

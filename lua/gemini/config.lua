@@ -16,7 +16,6 @@ local default_chat_config = {
 
 local default_instruction_config = {
   enabled = true,
-  menu_key = '<Leader><Leader><Leader>g',
   prompts = {
     {
       name = 'Unit Test',
